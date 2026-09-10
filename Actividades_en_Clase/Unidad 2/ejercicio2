@@ -1,0 +1,33 @@
+package a2253332351_practicas06;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ejercicio2 {
+
+    public static void main(String[] args) throws IOException
+    {
+       
+        int numero;
+        int dm, um, c, d, u;
+        BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+       
+        System.out.print("Introduzca un número entre 0 y 99.999: ");
+        numero = Integer.parseInt(entrada.readLine());
+        dm = (int)numero/10000;
+        numero = numero % 10000;
+        um = (int)numero/1000;
+        numero = numero % 1000;
+        c = (int)numero/100;
+        numero = numero % 100;
+        d = (int)numero/10;
+        numero = numero % 10;
+        u = numero;
+       
+        System.out.println(u + " " + d + " " + c + " " + um + " " + dm);
+      
+        numero = 10000*u + 1000*d + 100*c + 10*um + dm;
+        System.out.println(numero);
+    }
+}
+
