@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Tarea011_019 {
+
+    static String leerTexto(BufferedReader entrada, String mensaje) throws IOException {
+        System.out.print(mensaje);
+        return entrada.readLine();
+    }
+
+    static int[] calcularIndices(String texto) {
+        int[] indices = new int[26];
+        for (int i = 0; i < 26; i++) {
+            indices[i] = texto.indexOf((char) ('a' + i));
+        }
+        return indices;
+    }
+
+    static void mostrarFila(int[] indices, int desde, int hasta) {
+        StringBuilder letras = new StringBuilder();
+        StringBuilder valores = new StringBuilder();
+        for (int i = desde; i <= hasta; i++) {
+            letras.append(String.format("%-4c", (char) ('a' + i)));
+            valores.append(String.format("%-4d", indices[i]));
+        }
+        System.out.println(letras);
+        System.out.println("=".repeat(4 * (hasta - desde + 1)));
+        System.out.println(valores);
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+        String texto = leerTexto(entrada, "Ingrese una cadena con el alfabeto: ");
+        int[] indices = calcularIndices(texto);
+        mostrarFila(indices, 0, 9);
+        mostrarFila(indices, 10, 19);
+        mostrarFila(indices, 20, 25);
+        entrada.close();
+    }
+}
